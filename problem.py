@@ -79,17 +79,17 @@ class Node:
             if (self.operator == "*" or self.operator == "+") \
                 and (self.left.number < self.right.number):
                 right = hash(self.right)
-                res <<= (math.ceil(right.bit_length() / 6) * 6)
+                res <<= (max(math.ceil(right.bit_length() / 6), 1) * 6)
                 res = res | right
                 left = hash(self.left)
-                res <<= (math.ceil(left.bit_length() / 6) * 6)
+                res <<= (max(math.ceil(left.bit_length() / 6), 1) * 6)
                 res = res | left
             else:
                 left = hash(self.left)
-                res <<= (math.ceil(left.bit_length() / 6) * 6)
+                res <<= (max(math.ceil(left.bit_length() / 6), 1) * 6)
                 res = res | left
                 right = hash(self.right)
-                res <<= (math.ceil(right.bit_length() / 6) * 6)
+                res <<= (max(math.ceil(right.bit_length() / 6), 1) * 6)
                 res = res | right
             return res
 
