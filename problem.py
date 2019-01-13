@@ -95,6 +95,8 @@ class Node:
 
 class Problem:
 
+    hashing_set = set()
+
     def __init__(self):
         self.root = Node()
         self.operator_set = ["+", "-", "*", "/", "^"]
@@ -135,7 +137,12 @@ class Problem:
             except:
                 continue
                 # devide 0
-            break
+            h = hash(self)
+            if h in self.hashing_set:
+                continue
+            else:
+                self.hashing_set.add(h)
+                break
             
 
     def __str__(self):
