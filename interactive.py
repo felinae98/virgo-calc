@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #!/usr/bin/env python3
+=======
+>>>>>>> a0219ce9e5e388fcae48dc38d36ba2d268d442f8
 from problem import Problem
 import argparse
 from fractions import Fraction
@@ -12,6 +15,10 @@ If the answer is decimal, please answer it in fraction like 4/9
 Enjoy it!""")
     for _ in range(num):
         problem = Problem(symb)
+<<<<<<< HEAD
+=======
+        problem.generate()
+>>>>>>> a0219ce9e5e388fcae48dc38d36ba2d268d442f8
         print(str(problem) + "=?")
         while True:
             ans = input("Your answer:")
