@@ -12,7 +12,6 @@ If the answer is decimal, please answer it in fraction like 4/9
 Enjoy it!""")
     for _ in range(num):
         problem = Problem(symb)
-        problem.generate()
         print(str(problem) + "=?")
         while True:
             ans = input("Your answer:")
