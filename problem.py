@@ -97,8 +97,9 @@ class Problem:
 
     hashing_set = set()
 
-    def __init__(self):
-        self.root = Node()
+    def __init__(self, power_symb = "^"):
+        self.power_symb = power_symb
+        self.root = Node(self.power_symb)
         self.operator_set = ["+", "-", "*", "/", "^"]
         self.operator_weight = [8, 8, 4, 2, 1]
 
@@ -114,15 +115,15 @@ class Problem:
                 node.operator = random.choices(self.operator_set, weights=self.operator_weight)[0]
                 node.type = 1
                 if node.operator == "^":
-                    node.left = Node()
-                    node.right = Node()
+                    node.left = Node(self.power_symb)
+                    node.right = Node(self.power_symb)
                     node.right.type = 2
                     node.right.number = random.randrange(1,4)
                     empty_node_set.append(node.left)
                 else:
-                    node.left = Node()
+                    node.left = Node(self.power_symb)
                     empty_node_set.append(node.left)
-                    node.right = Node()
+                    node.right = Node(self.power_symb)
                     empty_node_set.append(node.right)
             # fill number
             for node in empty_node_set:
@@ -163,10 +164,8 @@ def _read_hash(h):
     return rt
 
 if __name__ == "__main__":
-    a = Problem()
-    a.generate()
-    print(a)
-    print(a.root.number)
-    h = hash(a)
-    print(h)
-    print(_read_hash(h))
+    for _ in range(3000):
+        a = Problem()
+        a.generate()
+        print(a)
+        print(len(a.hashing_set))
