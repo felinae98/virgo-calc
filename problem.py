@@ -97,11 +97,13 @@ class Problem:
 
     hashing_set = set()
 
-    def __init__(self, power_symb = "^"):
+    def __init__(self, power_symb = "^", auto_generate=True):
         self.power_symb = power_symb
         self.root = Node(self.power_symb)
         self.operator_set = ["+", "-", "*", "/", "^"]
         self.operator_weight = [8, 8, 4, 2, 1]
+        if auto_generate:
+            self.generate()
 
     def generate(self):
         while True:
@@ -166,6 +168,5 @@ def _read_hash(h):
 if __name__ == "__main__":
     for _ in range(3000):
         a = Problem()
-        a.generate()
         print(a)
         print(len(a.hashing_set))
