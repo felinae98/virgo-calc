@@ -7,7 +7,7 @@ $(document).ready(function(){
             $("#select-symb").prop("disabled", true);
         }
     });
-    $("#generate").click(function(){
+    $("#submit").click(function(){
         $.ajax({
             url: "/generate",
             type: "POST",
@@ -20,6 +20,18 @@ $(document).ready(function(){
             }
         }).done(function(data){
             $("#res-area").html(data);
-        })
+            $("#res-stat").removeClass();
+            $("#res-stat").addClass("btn btn-success");
+            $("#spinner").hide();
+            $("#res-stat").html("生成结果")
+        }).fail(function(){
+            $("#spinner").hide();
+            $("#res-stat").removeClass();
+            $("#res-stat").addClass("btn btn-error");
+        });
+        $("#res-stat").removeClass();
+        $("#res-stat").addClass("btn btn-primary");
+        $("#spinner").show();
+        $("#res-stat").html("加载中");
     });
 });

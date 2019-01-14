@@ -45,13 +45,13 @@
                     <div class="col-auto">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="enable-frac">
-                            <label class="form-check-label" for="enable-pow">答案存在分数</label>
+                            <label class="form-check-label" for="enable-frac">答案存在分数</label>
                         </div>
                     </div>
                     <div class="col-auto">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="enable-ans">
-                            <label class="form-check-label" for="enable-pow">包含答案</label>
+                            <label class="form-check-label" for="enable-ans">包含答案</label>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -72,12 +72,20 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-success mx-3" id="generate">生成问题</button>
+                        <button type="button" class="btn btn-success mx-3" id="submit">生成问题</button>
                     </div>
                 </div>
             </form>
             <div class="form-group">
-                <label for="res-area">生成结果</label>
+                <label for="res-area">
+                    <button class="btn btn-info" disabled id="res-stat">
+                        生成结果
+                    </button>
+                    <button id="spinner" class="btn btn-primary" style="display: none;" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>
+                        <span class="sr-only">Loading...</span>
+                    </button>
+                </label>
                 <textarea id="res-area" class="form-control" placeholder="" rows="30" readonly></textarea>
             </div>
 
