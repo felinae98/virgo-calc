@@ -8,7 +8,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/index.css">
 
     <title>Hello, world!</title>
 </head>
@@ -40,7 +39,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="prob-num-label">题目数量</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="题目数量" aria-label="题目数量" aria-describedby="prob-num-label">
+                            <input id="prob-num" type="text" class="form-control" placeholder="题目数量" aria-label="题目数量" aria-describedby="prob-num-label">
                         </div>
                     </div>
                     <div class="col-auto">
@@ -66,21 +65,20 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="select-symb">乘方运算符号</label>
                             </div>
-                            <select class="custom-select" id="select-symb">
+                            <select class="custom-select" id="select-symb" disabled>
                                 <option value="^" selected>^</option>
                                 <option value="**">**</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-success mx-3">生成问题</button>
+                        <button type="button" class="btn btn-success mx-3" id="generate">生成问题</button>
                     </div>
                 </div>
             </form>
             <div class="form-group">
                 <label for="res-area">生成结果</label>
-                <textarea id="res-area" class="form-control" placeholder="" rows="30" readonly>
-                </textarea>
+                <textarea id="res-area" class="form-control" placeholder="" rows="30" readonly></textarea>
             </div>
 
         </div>
@@ -91,8 +89,9 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/static/js/jquery.slim.min.js"></script>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/index.js"></script>
 </body>
 
 </html>
