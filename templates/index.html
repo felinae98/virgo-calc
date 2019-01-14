@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a href="/" class="navbar-brand">Virgo Calc</a>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="tabs" role="tablist">
+                    <li class="navbar-item">
+                        <a href="#generate" class="nav-link active" id="generate-tab" data-toggle="tab" role="tab"
+                            aria-controls="generate" aria-selected="true">生成题目</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="#exam" class="nav-link" id="exam-tab" data-toggle="tab" role="tab" aria-controls="exam"
+                            aria-selected="false">在线答题</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content container" id="content">
+        <div class="tab-pane fade show active" id="generate" role="tabpanel" aria-labelledby="generate-tab">
+            <form>
+                <div class="form-row align-items-center my-3">
+                    <div class="col-auto">
+                        <div class="input-group px-3" id="prob-num-grp">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="prob-num-label">题目数量</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="题目数量" aria-label="题目数量" aria-describedby="prob-num-label">
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="enable-frac">
+                            <label class="form-check-label" for="enable-pow">答案存在分数</label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="enable-ans">
+                            <label class="form-check-label" for="enable-pow">包含答案</label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="enable-pow">
+                            <label class="form-check-label" for="enable-pow">乘方运算</label>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group mx-2">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="select-symb">乘方运算符号</label>
+                            </div>
+                            <select class="custom-select" id="select-symb">
+                                <option value="^" selected>^</option>
+                                <option value="**">**</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-success mx-3">生成问题</button>
+                    </div>
+                </div>
+            </form>
+            <div class="form-group">
+                <label for="res-area">生成结果</label>
+                <textarea id="res-area" class="form-control" placeholder="" rows="30" readonly>
+                </textarea>
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="exam" role="tabpanel" aria-labelledby="exam-tab">
+            exam
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/static/js/jquery.slim.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
