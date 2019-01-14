@@ -97,13 +97,14 @@ class Problem:
 
     hashing_set = set()
 
-    def __init__(self, power_symb = "^", auto_generate=True):
+    def __init__(self, power_symb = "^", auto_generate=True, enable_frac=True):
         self.power_symb = power_symb
         self.root = Node(self.power_symb)
         self.operator_set = ["+", "-", "*", "/", "^"]
         self.operator_weight = [8, 8, 4, 2, 1]
         if auto_generate:
             self.generate()
+        self.enable_frac = enable_frac
 
     def generate(self):
         while True:
@@ -142,6 +143,8 @@ class Problem:
                 # devide 0
             h = hash(self)
             if h in self.hashing_set:
+                continue
+            if self.enable_frac and self.root.number.denominator != 1:
                 continue
             else:
                 self.hashing_set.add(h)
