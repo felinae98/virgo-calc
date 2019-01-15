@@ -34,4 +34,10 @@ $(document).ready(function(){
         $("#spinner").show();
         $("#res-stat").html("加载中");
     });
+    var resize_textarea = function(){
+        var height = $("footer").offset().top - $("#res-area").offset().top - 30;
+        $("#res-area").height(height);
+    }
+    window.onresize=resize_textarea;
+    resize_textarea();
 });
