@@ -112,8 +112,8 @@
             </div>
             <div id="prob-div" class="m-auto w-75">
                 <div class="row">
-                    <div class="col-auto">2+2</div>
-                    <div class="col-auto">
+                    <div class="col-6 my-auto text-right" id="prob-text">2+2</div>
+                    <div class="col-6">
                         <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -121,9 +121,21 @@
                                 </div>
                                 <input type="text" class="form-control" id="ans" placeholder="答案">
                             </div>
-                            <button type="button" class="btn btn-primary">提交答案</button>
+                            <button type="button" class="btn btn-primary mx-2" id="submit-ans">提交答案</button>
                         </form>
                     </div>
+                </div>
+                <div class="alert alert-success my-3" role="alert" id="ans-correct">
+                    恭喜，答案正确
+                </div>
+                <div class="alert alert-danger my-3" role="alert" id="ans-error">
+                    答案错误，正确答案是：<span id="correct-value"></span>
+                </div>
+                <div class="text-center">
+                    现在是第<span id="cur-prob-num"></span>题，共有<span id="all-prob-num">题
+                </div>
+                <div class="text-center">
+                <button class="btn btn-primary mx-auto align-middle" type="button" id="next-prob">下一题</button>
                 </div>
             </div>
         </div>

@@ -49,9 +49,45 @@ $(document).ready(function(){
                 enable_frac: $("#start-frac").prop("checked"),
                 enable_pow: $("#start-pow").prop("checked")
             }
-        }).done(function(){
+        }).done(function(data){
             $("#start-div").hide();
-            
+            $("#prob-div").show();
+            res = JSON.parse(data);
+            $("#prob-text").html(res.porb);
+            $("#cur-prob-num").html(res.cur_num);
+            $("#all-prob-num").html(res.all_num);
         })
     });
+    $("#submit-ans").click(function(){
+        $.ajax({
+            url: "/submit",
+            type: "POST",
+            data: {
+                ans: $("#ans").prop("value")
+            }
+        }).done(function(data){
+            res = JSON.parse(data);
+            if(res.correct){
+                $("#ans-correct").show();
+            }
+            else{
+                $("#ans-error").show();
+                $("#correct-value").html(res.ans);
+            }
+        })
+    });
+    $("#next-prob").click(function(){
+        $("#ans-correct").hide();
+        $("#ans-error").hide();
+        $("#ans-error").prop("value", "");
+        $.ajax({
+            url: "/next",
+            type: "POST",
+        }).done(function(data){
+            res = JSON.parse(data);
+            $("#prob-text").html(res.prob);
+            $("#cur-prob-num").html(res.cur_num);
+            $("#all-prob-num").html(res.all_num);
+        })
+    })
 });

@@ -45,7 +45,8 @@
             "module": "flask",
             "env": {
                 "FLASK_APP": "app.py",
-                "FLASK_ENV": "development"
+                "FLASK_ENV": "development",
+                "SECRTE_KEY": "qwertyuiopooiuytrewq"
             },
             "args": [
                 "run",

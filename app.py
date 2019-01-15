@@ -1,6 +1,17 @@
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, abort, session
+from flask_session import Session
 from problem import Problem
+from os import environ
+import json
 app = Flask(__name__)
+
+app.config['SESSION_TYPE'] = "filesystem"
+app.config['SESSION_FILE_DIR'] = "/tmp/flask-session"
+app.config['SESSION_FILE_MODE'] = 384
+app.config['SESSION_PERMANENT'] = True
+
+app.secret_key = environ["SECRET_KEY"]
+Session(app)
 
 @app.route("/")
 def index():
@@ -25,3 +36,18 @@ def generate():
         else:
             res.append("{}=?".format(str(problem)))
     return '\n'.join(res)
+
+@app.route("/start", methods=["POST"])
+def start():
+    try:
+        session['all_num'] = int(request.form['num'])
+        session['enable_frac'] = request.form['enable_frac'] == "true"
+        session['enable_pow'] = request.form['enable_pow'] == "true"
+    except:
+        abort(400)
+    session['cur_num'] = 1
+    problem = Problem("^", True, session['enable_frac'], session['enable_pow'])
+    res = {"prob":str(problem), "cur_num": session['cur_num'], "all_num": session['all_num']}
+    session['ans'] = str(problem.root.number)
+    return json.dumps(res)
+
