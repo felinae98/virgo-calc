@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="tab-content container" id="content">
+    <div class="tab-content container h-100" id="content">
         <div class="tab-pane fade show active" id="generate" role="tabpanel" aria-labelledby="generate-tab">
             <form>
                 <div class="form-row align-items-center my-3">
@@ -91,8 +91,41 @@
             </div>
 
         </div>
-        <div class="tab-pane fade" id="exam" role="tabpanel" aria-labelledby="exam-tab">
-            exam
+        <div class="tab-pane fade h-100 d-flex" id="exam" role="tabpanel" aria-labelledby="exam-tab">
+            <div class="rounded border border-primary p-5 m-auto h-auto d-none" id="start-div">
+                <form id="start-form" class="text-center mx-auto">
+                    <input type="text" placeholder="试题数量" class="form-control" required="" id="start-num">
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" value="" id="start-frac">
+                        <label class="form-check-label" for="start-frac">
+                            答案存在分数
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="start-pow">
+                        <label class="form-check-label" for="start-pow">
+                            包含乘方运算
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary my-3" id="start-button">开始做题！</button>
+                </form>
+            </div>
+            <div id="prob-div" class="m-auto w-75">
+                <div class="row">
+                    <div class="col-auto">2+2</div>
+                    <div class="col-auto">
+                        <form class="form-inline">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">=</div>
+                                </div>
+                                <input type="text" class="form-control" id="ans" placeholder="答案">
+                            </div>
+                            <button type="button" class="btn btn-primary">提交答案</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <footer class="footer mt-auto py-3">

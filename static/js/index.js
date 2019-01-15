@@ -40,4 +40,18 @@ $(document).ready(function(){
     }
     window.onresize=resize_textarea;
     resize_textarea();
+    $("#start-button").click(function(){
+        $.ajax({
+            url: "/start",
+            type: "POST",
+            data: {
+                num: $("#start-num").prop("value"),
+                enable_frac: $("#start-frac").prop("checked"),
+                enable_pow: $("#start-pow").prop("checked")
+            }
+        }).done(function(){
+            $("#start-div").hide();
+            
+        })
+    });
 });

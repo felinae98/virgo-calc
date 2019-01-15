@@ -16,3 +16,12 @@ html, body{
 code {
   font-size: 80%;
 }
+
+#start-div{
+    max-width: 330px;
+    max-height: 500px;
+}
+
+#prob-div{
+    max-height: 500px;
+}
