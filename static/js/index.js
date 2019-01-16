@@ -53,7 +53,7 @@ $(document).ready(function(){
             $("#start-div").hide();
             $("#prob-div").show();
             res = JSON.parse(data);
-            $("#prob-text").html(res.porb);
+            $("#prob-text").html(res.prob);
             $("#cur-prob-num").html(res.cur_num);
             $("#all-prob-num").html(res.all_num);
         })

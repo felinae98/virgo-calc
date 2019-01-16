@@ -3,6 +3,8 @@ from flask_session import Session
 from problem import Problem
 from os import environ
 import json
+from fractions import Fraction
+
 app = Flask(__name__)
 
 app.config['SESSION_TYPE'] = "filesystem"
@@ -46,8 +48,34 @@ def start():
     except:
         abort(400)
     session['cur_num'] = 1
+    session["correct_ans"] = 0
     problem = Problem("^", True, session['enable_frac'], session['enable_pow'])
     res = {"prob":str(problem), "cur_num": session['cur_num'], "all_num": session['all_num']}
     session['ans'] = str(problem.root.number)
     return json.dumps(res)
 
+@app.route("/submit", methods=["POST"])
+def submit():
+    try:
+        ans = Fraction(request.form['ans'])
+    except:
+        abort(400)
+    if str(ans) == session["ans"]:
+        session['correct_ans'] += 1
+        res = {"correct": True}
+        return json.dumps(res)
+    else:
+        res = {"correct": False, "ans": session['ans']}
+        return json.dumps(res)
+
+@app.route("/next", methods=["POST"])
+def next():
+    session['cur_num'] += 1
+    problem = Problem("^", True, session['enable_frac'], session['enable_pow'])
+    session['ans'] = str(problem.root.number)
+    res = {
+        "prob": str(problem),
+        "cur_num": session['cur_num'],
+        "all_num": session["all_num"]
+    }
+    return json.dumps(res)
