@@ -74,7 +74,8 @@ $(document).ready(function(){
                 $("#ans-error").show();
                 $("#correct-value").html(res.ans);
             }
-        })
+        });
+        $("#ans").prop("value", "");
     });
     $("#next-prob").click(function(){
         $("#ans-correct").hide();
@@ -85,9 +86,19 @@ $(document).ready(function(){
             type: "POST",
         }).done(function(data){
             res = JSON.parse(data);
-            $("#prob-text").html(res.prob);
-            $("#cur-prob-num").html(res.cur_num);
-            $("#all-prob-num").html(res.all_num);
+            if(!res.end){
+                $("#prob-text").html(res.prob);
+                $("#cur-prob-num").html(res.cur_num);
+                $("#all-prob-num").html(res.all_num);
+            }
+            else{
+                $("#end-all").html(res.all_num);
+                $("#end-correct").html(res.correct_num);
+                $("#end-modal").modal();
+            }
         })
-    })
+    });
+    $("#end-modal-check").click(function(){
+        location.reload();
+    });
 });

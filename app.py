@@ -70,12 +70,21 @@ def submit():
 
 @app.route("/next", methods=["POST"])
 def next():
-    session['cur_num'] += 1
-    problem = Problem("^", True, session['enable_frac'], session['enable_pow'])
-    session['ans'] = str(problem.root.number)
-    res = {
-        "prob": str(problem),
-        "cur_num": session['cur_num'],
-        "all_num": session["all_num"]
-    }
-    return json.dumps(res)
+    if session['cur_num'] == session['all_num']:
+        res = {
+            "end": True,
+            "correct_num": session["correct_ans"],
+            "all_num": session['all_num']
+        }
+        return json.dumps(res)
+    else:
+        session['cur_num'] += 1
+        problem = Problem("^", True, session['enable_frac'], session['enable_pow'])
+        session['ans'] = str(problem.root.number)
+        res = {
+            "prob": str(problem),
+            "cur_num": session['cur_num'],
+            "all_num": session["all_num"],
+            "end": False
+        }
+        return json.dumps(res)

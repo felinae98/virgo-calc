@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/index.css">
 
-    <title>Hello, world!</title>
+    <title>Virgo Calc</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -132,7 +132,7 @@
                     答案错误，正确答案是：<span id="correct-value"></span>
                 </div>
                 <div class="text-center">
-                    现在是第<span id="cur-prob-num"></span>题，共有<span id="all-prob-num">题
+                    现在是第<span id="cur-prob-num"></span>题，共有<span id="all-prob-num"></span>题
                 </div>
                 <div class="text-center">
                 <button class="btn btn-primary mx-auto align-middle" type="button" id="next-prob">下一题</button>
@@ -140,9 +140,25 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="end-modal" tabindex="-1" role="dialog" aria-labelledby="end-modal-title">
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="end-modal-title">答题结束</h5>
+                </div>
+                <div class="modal-body">
+                    您一共回答了<span id="end-all"></span>道题，正确<span id="end-correct"></span>道
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="end-modal-check">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="footer mt-auto py-3">
         <div class="container">
-            <span class="text-muted mx-5">Place sticky footer content here.</span>
+            <span class="text-muted mx-5">Virgo-Calc</span>
         </div>
     </footer>
 
